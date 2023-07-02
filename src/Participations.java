@@ -1,4 +1,4 @@
-package easycalcgame;
+
 
 public class Participations {
 
