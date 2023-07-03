@@ -40,8 +40,9 @@ public class EasyCalcGame {
 
         while (help) {
             try {
-                System.out.print("\nWie viele Spiele möchtest du spielen? --> ");
+                System.out.print("Wie viele Spiele möchtest du spielen? --> ");
                 inputNumbG = scanner.nextLine();
+
                 numberOfGames = Integer.parseInt(inputNumbG);
                 if (numberOfGames > 0)
                     help = false;
@@ -59,18 +60,22 @@ public class EasyCalcGame {
         int difficulty = 0;
         String input = "";
         String text = "Wähle eine Schwierigkeit: \n" +
-                "du hast die Wahl zwischen leicht, mittel oder schwer!\n" +
-                "Tippe 1 für leicht, 2 für mittel oder 3 für schwer in die Konsole ein: \n  > ";
+                "   1.  Leicht\n" +
+                "   2.  Mittel\n" +
+                "   3.  Schwer\n" ;
         boolean check = true;
         while (check) {
             sepl();
             System.out.print(text);
+            sepl();
+            System.out.print("> ");
             input = scanner.nextLine();
             input = input.trim();
             if (input.equals("1") | input.equals("2") || input.equals("3"))
                 check = false;
 
         }
+        sepl();
 
         if (input.equals("1"))
             difficulty = 1;         //easy
