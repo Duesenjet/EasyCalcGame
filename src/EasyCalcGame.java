@@ -42,7 +42,6 @@ public class EasyCalcGame {
             try {
                 System.out.print("Wie viele Spiele möchtest du spielen? --> ");
                 inputNumbG = scanner.nextLine();
-
                 numberOfGames = Integer.parseInt(inputNumbG);
                 if (numberOfGames > 0)
                     help = false;
@@ -50,8 +49,6 @@ public class EasyCalcGame {
                 System.out.println("\nBitte gib eine Zahl größer 0 ein! ");
             }
         }
-
-
         return numberOfGames;
     }
 
@@ -73,10 +70,8 @@ public class EasyCalcGame {
             input = input.trim();
             if (input.equals("1") | input.equals("2") || input.equals("3"))
                 check = false;
-
         }
         sepl();
-
         if (input.equals("1"))
             difficulty = 1;         //easy
 
@@ -107,7 +102,7 @@ public class EasyCalcGame {
             Participations[] participations = new Participations[numberOfGames];
 
             sepl();
-            System.out.println("    Round  " + Rounds);
+            System.out.println("    Runde  " + Rounds);
             sepl();
 
             for (int i = 0; i < numberOfGames; i++) {
@@ -122,8 +117,6 @@ public class EasyCalcGame {
 
                 int inncercounter = 0;
                 double userResult = 0;
-
-
 
                 while (check) {
 
@@ -143,13 +136,10 @@ public class EasyCalcGame {
                         System.out.println("Bitte gib eine gültige Zahl ein!");
                         inCorrect();
                     }
-
-
                 }
                 participations[i].setTimeB();                                                                      // setting bTime when correct result datatype is input
                 isCorrect[i] = participations[i].isCorrect(calc[i].getResult(a, b, c), userResult);                //checks if the result is correct in method in Partici. and adds it to isCorrect ist
                 operations[i] = String.format("%d %c %d = %.2f", a, c, b, userResult);                              //adding the whole operation as a String in the array
-
             }
             System.out.println();
 
@@ -172,14 +162,23 @@ public class EasyCalcGame {
 
             }
             aTime /= (numberOfGames * 1.0);
+            double timeForAllGames = 0.0;
+            for (int i = 0; i < numberOfGames; i++){
+                timeForAllGames += participations[i].getTimeNeeded();
+            }
 
             sepl();
             System.out.printf("Durchschnittliche Zeit pro Rechnung: %.2f sec \n", aTime);
             sepl();
-            if (mathsBrain)
+            System.out.printf("Gesamtzeit für %d Spiele gebrauchte Zeit: %.2f \n",numberOfGames,timeForAllGames);
+            sepl();
+            if (mathsBrain) {
+                sepl();
                 System.out.print("Glückwunsch, du hast alle Ergebnisse richtig!\n ");
-
-            System.out.println("Wenn du keine Runde mehr spielen möchtest\n schreibe ein e und drück die Entertaste,\n jede andere Eingabe startet das Spiel neu!");
+                sepl();
+                sepl();
+            }
+            System.out.println("Wenn du das Spiel beenden möchtest\nschreibe ein e und drück die Entertaste,\njede andere Eingabe startet eine neue Runde!");
             String willste = scanner.nextLine();
             willste = willste.trim();
             if (willste.equals("e"))
