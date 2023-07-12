@@ -45,6 +45,8 @@ public class EasyCalcGame {
                 numberOfGames = Integer.parseInt(inputNumbG);
                 if (numberOfGames > 0)
                     help = false;
+                else
+                    System.out.println("Bitte gib eine Zahl größer 0 ein! ");
             } catch (NumberFormatException e) {
                 System.out.println("\nBitte gib eine Zahl größer 0 ein! ");
             }
@@ -67,8 +69,8 @@ public class EasyCalcGame {
             sepl();
             System.out.print("> ");
             input = scanner.nextLine();
-            input = input.trim();
-            if (input.equals("1") | input.equals("2") || input.equals("3"))
+            input = input.trim().toLowerCase(Locale.ROOT);
+            if (input.equals("1") || input.equals("2") || input.equals("3"))
                 check = false;
         }
         sepl();
@@ -84,6 +86,15 @@ public class EasyCalcGame {
         return difficulty;
     }
 
+    public static void mathsBrain(boolean mathsBrain){       //output if all are correct
+        if (mathsBrain) {
+            sepl();
+            System.out.print("Glückwunsch, du hast alle Ergebnisse richtig!\n");
+            sepl();
+            sepl();
+        }
+    }
+
     public static void main(String[] args) {
         Locale.setDefault(new java.util.Locale("en", "US"));
         Scanner scanner = new Scanner(System.in);
@@ -92,7 +103,7 @@ public class EasyCalcGame {
         String playerName = playerName();
         do {
 
-            int difficulty = difficulty();
+            int difficulty = difficulty();                                  //method for difficulty
             int numberOfGames = numberOfGames(scanner);
             Rounds++;
 
@@ -172,12 +183,7 @@ public class EasyCalcGame {
             sepl();
             System.out.printf("Gesamtzeit für %d Spiele gebrauchte Zeit: %.2f \n",numberOfGames,timeForAllGames);
             sepl();
-            if (mathsBrain) {
-                sepl();
-                System.out.print("Glückwunsch, du hast alle Ergebnisse richtig!\n ");
-                sepl();
-                sepl();
-            }
+            mathsBrain(mathsBrain);                     //output if all calcs are correct
             System.out.println("Wenn du das Spiel beenden möchtest\nschreibe ein e und drück die Entertaste,\njede andere Eingabe startet eine neue Runde!");
             String willste = scanner.nextLine();
             willste = willste.trim();
