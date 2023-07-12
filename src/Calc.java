@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Calc {
 
-    final Random rand = new Random();
+    private final Random rand = new Random();
     private int a;
     private int b;
     private char operator;
